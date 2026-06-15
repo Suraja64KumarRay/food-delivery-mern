@@ -103,3 +103,35 @@
         justify-content: start;
     }
 }
+
+body.dark .cart-items-item {
+  color: var(--text-primary);
+}
+
+body.dark .cart hr {
+  background-color: var(--border);
+}
+
+body.dark .cart-total-details {
+  color: var(--text-secondary);
+}
+
+body.dark .cart-total hr {
+  background-color: var(--border);
+}
+
+body.dark .cart-promocode p {
+  color: var(--text-secondary);
+}
+
+body.dark .cart-promocode-input {
+  background-color: var(--promo-bg);
+}
+
+body.dark .cart-promocode-input input {
+  color: var(--text-primary);
+}
+
+body.dark .cart-promocode-input button {
+  background-color: var(--cart-btn-bg);
+}

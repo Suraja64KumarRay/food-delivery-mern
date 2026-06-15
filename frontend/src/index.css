@@ -7,22 +7,61 @@
   font-family: Outfit;
   scroll-behavior: smooth;
 }
+
+/* ===== LIGHT MODE (default) ===== */
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f9f9f9;
+  --bg-card: #ffffff;
+  --text-primary: #262626;
+  --text-secondary: #49557e;
+  --text-muted: #808080;
+  --border: #e2e2e2;
+  --input-bg: #ffffff;
+  --input-border: #c9c9c9;
+  --search-bg: #fff4f2;
+  --dropdown-bg: #fff2ef;
+  --promo-bg: #eaeaea;
+  --cart-btn-bg: #000000;
+  --shadow: #00000015;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  --bg: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-card: #1e1e1e;
+  --text-primary: #f0f0f0;
+  --text-secondary: #a0aec0;
+  --text-muted: #718096;
+  --border: #2d2d2d;
+  --input-bg: #2a2a2a;
+  --input-border: #444;
+  --search-bg: #2a2a2a;
+  --dropdown-bg: #1e1e1e;
+  --promo-bg: #2a2a2a;
+  --cart-btn-bg: tomato;
+  --shadow: #00000050;
+}
+
 body {
   min-height: 100vh;
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 .app {
   width: 80%;
   margin: auto;
 }
+
 @keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

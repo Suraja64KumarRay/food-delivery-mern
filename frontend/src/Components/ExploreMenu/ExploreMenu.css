@@ -62,3 +62,19 @@
         font-size: 14px;
     }
 }
+
+body.dark .explore-menu h1 {
+  color: var(--text-primary);
+}
+
+body.dark .explore-menu-text {
+  color: var(--text-muted);
+}
+
+body.dark .explore-menu-list-item p {
+  color: var(--text-secondary);
+}
+
+body.dark .explore-menu hr {
+  background-color: var(--border);
+}

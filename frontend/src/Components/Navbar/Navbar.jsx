@@ -1,64 +1,111 @@
-import React, {useContext, useState, useRef, useEffect} from 'react'
-import './Navbar.css' 
-import {assets} from '../../assets/assets'
-import { Link, useNavigate } from 'react-router-dom'
-import { StoreContext } from '../../Context/StoreContext'
+import React, { useContext, useState, useRef, useEffect } from "react";
+import "./Navbar.css";
+import { assets } from "../../assets/assets";
+import { Link, useNavigate } from "react-router-dom";
+import { StoreContext } from "../../Context/StoreContext";
 
-const Navbar = ({setShowLogin}) => {
-
-  const[menu,setMenu] = useState("menu");
+const Navbar = ({ setShowLogin }) => {
+  const [menu, setMenu] = useState("menu");
   const [showSearch, setShowSearch] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const searchInputRef = useRef(null);
 
-  const {getTotalCartAmount,token,setToken,setSearchTerm} = useContext(StoreContext);
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("theme") === "dark";
+  });
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [darkMode]);
+
+  const { getTotalCartAmount, token, setToken, setSearchTerm } =
+    useContext(StoreContext);
 
   const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("token");
     setToken("");
-    navigate("/")
-  }
+    navigate("/");
+  };
 
   const handleSearchToggle = () => {
-    setShowSearch(prev => !prev);
+    setShowSearch((prev) => !prev);
     if (!showSearch) {
       setTimeout(() => searchInputRef.current?.focus(), 100);
     } else {
-      setSearchQuery('');
-      setSearchTerm('');
+      setSearchQuery("");
+      setSearchTerm("");
     }
-  }
+  };
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
     setSearchTerm(e.target.value);
     // Scroll to food display if not already there
     if (e.target.value.length === 1) {
-      const el = document.getElementById('food-display');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      const el = document.getElementById("food-display");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
     }
-  }
+  };
 
   const handleSearchKeyDown = (e) => {
-    if (e.key === 'Escape') {
+    if (e.key === "Escape") {
       setShowSearch(false);
-      setSearchQuery('');
-      setSearchTerm('');
+      setSearchQuery("");
+      setSearchTerm("");
     }
-  }
+  };
 
   return (
     <div className="navbar">
-      <Link to='/'><img src={assets.logo} alt="Logo" className="logo" /></Link>
-      <ul className='navbar-menu'>
-        <Link to='/' onClick={() => setMenu("home")} className={menu==="home"?"active":""}>home</Link>
-        <a href='#explore-menu' onClick={() => setMenu("menu")} className={menu==="menu"?"active":""}>menu</a>
-        <a href='#app-download' onClick={() => setMenu("mobile-app")} className={menu==="mobile-app"?"active":""}>mobile-app</a>
-        <a href='#footer' onClick={() => setMenu("contact-us")} className={menu==="contact-us"?"active":""}>contact us</a>
+      <Link to="/">
+        <img src={assets.logo} alt="Logo" className="logo" />
+      </Link>
+      <ul className="navbar-menu">
+        <Link
+          to="/"
+          onClick={() => setMenu("home")}
+          className={menu === "home" ? "active" : ""}
+        >
+          home
+        </Link>
+        <a
+          href="#explore-menu"
+          onClick={() => setMenu("menu")}
+          className={menu === "menu" ? "active" : ""}
+        >
+          menu
+        </a>
+        <a
+          href="#app-download"
+          onClick={() => setMenu("mobile-app")}
+          className={menu === "mobile-app" ? "active" : ""}
+        >
+          mobile-app
+        </a>
+        <a
+          href="#footer"
+          onClick={() => setMenu("contact-us")}
+          className={menu === "contact-us" ? "active" : ""}
+        >
+          contact us
+        </a>
       </ul>
       <div className="navbar-right">
+        <button
+          className="dark-toggle"
+          onClick={() => setDarkMode((p) => !p)}
+          title="Toggle dark mode"
+        >
+          {darkMode ? "☀️" : "🌙"}
+        </button>
         <div className="navbar-search-container">
           <img
             src={assets.search_icon}
@@ -67,7 +114,9 @@ const Navbar = ({setShowLogin}) => {
             className="search-icon-btn"
             title="Search food"
           />
-          <div className={`search-input-wrapper ${showSearch ? 'search-active' : ''}`}>
+          <div
+            className={`search-input-wrapper ${showSearch ? "search-active" : ""}`}
+          >
             <input
               ref={searchInputRef}
               type="text"
@@ -78,27 +127,46 @@ const Navbar = ({setShowLogin}) => {
               className="navbar-search-input"
             />
             {searchQuery && (
-              <span className="search-clear" onClick={() => { setSearchQuery(''); setSearchTerm(''); searchInputRef.current?.focus(); }}>✕</span>
+              <span
+                className="search-clear"
+                onClick={() => {
+                  setSearchQuery("");
+                  setSearchTerm("");
+                  searchInputRef.current?.focus();
+                }}
+              >
+                ✕
+              </span>
             )}
           </div>
         </div>
-       <div className="navbar-search-icon">
-        <Link to='/cart'><img src={assets.basket_icon} alt="Cart"/></Link>
-        <div className={getTotalCartAmount()===0?"":"dot"}>
+        <div className="navbar-search-icon">
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="Cart" />
+          </Link>
+          <div className={getTotalCartAmount() === 0 ? "" : "dot"}></div>
         </div>
-       </div>
-       {!token?<button onClick={()=>setShowLogin(true)}>sign in</button>
-       :<div className='navbar-profile'>
+        {!token ? (
+          <button onClick={() => setShowLogin(true)}>sign in</button>
+        ) : (
+          <div className="navbar-profile">
             <img src={assets.profile_icon} alt="" />
-            <ul className='nav-profile-dropdown'>
-              <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+            <ul className="nav-profile-dropdown">
+              <li onClick={() => navigate("/myorders")}>
+                <img src={assets.bag_icon} alt="" />
+                <p>Orders</p>
+              </li>
               <hr />
-              <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
             </ul>
-        </div>}
+          </div>
+        )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

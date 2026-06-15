@@ -39,3 +39,13 @@
 .place-order .cart-total button {
     margin-top: 30px;
 }
+
+body.dark .place-order-left input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}
+
+body.dark .place-order-left .title {
+  color: var(--text-primary);
+}

@@ -72,3 +72,18 @@
     font-weight: 500;
     cursor: pointer;
 }
+
+body.dark .login-popup-container {
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+}
+
+body.dark .login-popup-title {
+  color: var(--text-primary);
+}
+
+body.dark .login-popup-inputs input {
+  background-color: var(--input-bg);
+  border-color: var(--input-border);
+  color: var(--text-primary);
+}

@@ -1,8 +1,15 @@
 .navbar {
-    padding: 20px 0px;
+    padding: 20px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg);
+    box-shadow: 0 2px 10px var(--shadow);
+    border-bottom: 1px solid var(--border);
+    transition: background-color 0.3s ease;
 }
 
 .navbar .logo {
@@ -209,4 +216,50 @@
   .navbar-search-input {
     width: 110px;
   }
+}
+
+/* Dark mode toggle button */
+.dark-toggle {
+  background: none !important;
+  border: none !important;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0 !important;
+  line-height: 1;
+}
+
+/* Navbar dark mode */
+body.dark .navbar {
+  background-color: var(--bg);
+}
+
+body.dark .navbar-menu a,
+body.dark .navbar-menu {
+  color: var(--text-secondary);
+}
+
+body.dark .navbar button {
+  color: var(--text-secondary);
+  border-color: tomato;
+}
+
+body.dark .navbar button:hover {
+  background-color: var(--search-bg);
+}
+
+body.dark .nav-profile-dropdown {
+  background-color: var(--dropdown-bg);
+  border-color: tomato;
+  outline-color: var(--bg);
+  color: var(--text-primary);
+}
+
+body.dark .search-input-wrapper {
+  background: var(--search-bg);
+  border-color: tomato;
+}
+
+body.dark .navbar-search-input {
+  color: var(--text-primary);
+  background: transparent;
 }
