@@ -1,0 +1,143 @@
+.delivery-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.delivery-hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #fff4f2, #ffe8e2);
+  border-radius: 16px;
+  margin-bottom: 50px;
+}
+
+.delivery-hero h1 {
+  font-size: 38px;
+  color: tomato;
+  margin-bottom: 12px;
+}
+
+.delivery-hero p {
+  font-size: 18px;
+  color: #49557e;
+}
+
+.delivery-section {
+  margin-bottom: 50px;
+}
+
+.delivery-section h2 {
+  font-size: 26px;
+  color: #49557e;
+  margin-bottom: 20px;
+  border-left: 4px solid tomato;
+  padding-left: 14px;
+}
+
+.delivery-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.delivery-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.step-number {
+  background: tomato;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.step-text h4 {
+  color: #49557e;
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.step-text p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.delivery-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.delivery-info-card {
+  background: #fff4f2;
+  border: 1px solid #ffd4c8;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.delivery-info-card h3 {
+  color: tomato;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.delivery-info-card p {
+  color: #49557e;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.track-note {
+  background: #f0f8ff;
+  border: 1px solid #bee3f8;
+  border-radius: 10px;
+  padding: 20px;
+  color: #49557e;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.delivery-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.delivery-contact p {
+  font-size: 16px;
+  color: #49557e;
+}
+
+.delivery-contact a {
+  color: tomato;
+  text-decoration: none;
+}
+
+.delivery-contact a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 750px) {
+  .delivery-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .delivery-hero h1 {
+    font-size: 28px;
+  }
+}

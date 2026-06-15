@@ -1,0 +1,109 @@
+.about-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+.about-hero {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #fff4f2, #ffe8e2);
+  border-radius: 16px;
+  margin-bottom: 50px;
+}
+
+.about-hero h1 {
+  font-size: 42px;
+  color: tomato;
+  margin-bottom: 12px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: #49557e;
+}
+
+.about-section {
+  margin-bottom: 50px;
+}
+
+.about-section h2 {
+  font-size: 26px;
+  color: #49557e;
+  margin-bottom: 14px;
+  border-left: 4px solid tomato;
+  padding-left: 14px;
+}
+
+.about-section p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.8;
+}
+
+.about-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.about-card {
+  text-align: center;
+  padding: 30px 20px;
+  background: #fff4f2;
+  border-radius: 12px;
+  border: 1px solid #ffd4c8;
+}
+
+.about-icon {
+  font-size: 32px;
+}
+
+.about-card h3 {
+  font-size: 28px;
+  color: tomato;
+  margin: 10px 0 4px;
+}
+
+.about-card p {
+  color: #49557e;
+  font-size: 14px;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.about-feature {
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+.about-feature h4 {
+  font-size: 16px;
+  color: #49557e;
+  margin-bottom: 8px;
+}
+
+.about-feature p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+@media (max-width: 750px) {
+  .about-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .about-features {
+    grid-template-columns: 1fr;
+  }
+  .about-hero h1 {
+    font-size: 30px;
+  }
+}
